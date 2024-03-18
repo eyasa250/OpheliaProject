@@ -5,11 +5,16 @@ const app = express();
 app.use(bodyParser.json());
 
 //models
-const Chambre = require('./model/room'); 
 
 //routers
+const userrouter = require('./routes/userrouter');
 const roomRouter = require('./routes/roomrouter');
-app.use('/rooms', roomRouter);
+const taskRouter = require('./routes/taskrouter');
+
+app.use('/user', userrouter);
+app.use('/room', roomRouter);
+app.use('/task', taskRouter);
+
 
 
 app.use(bodyParser.json());

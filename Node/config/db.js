@@ -1,9 +1,10 @@
 const { Sequelize } = require('sequelize');
-PORT=5000
+
 // Initialize Sequelize with your MySQL database credentials
 const sequelize = new Sequelize('ophelia0', 'root', '', {
   host: 'localhost',
-  dialect: 'mysql' // This should be a string
+  dialect: 'mysql' ,
+  freezeTableName: false// This should be a string
 });
 
 // Test the database connection
@@ -16,6 +17,22 @@ async function testConnection() {
   }
 }
 
-testConnection();
+// Synchronize models with the database
+async function synchronizeModels() {
+  try {
+    await sequelize.sync({ alter: true });
+    console.log('Models synchronized with the database.');
+  } catch (error) {
+    console.error('Error synchronizing models with the database:', error);
+  }
+}
+
+// Test the database connection and synchronize models
+async function initializeDatabase() {
+  await testConnection();
+  await synchronizeModels();
+}
+
+initializeDatabase();
 
 module.exports = sequelize;

@@ -1,26 +1,28 @@
-// chambre.js
+const { Sequelize, DataTypes } = require('sequelize');
+const sequelize = require('../config/db'); // Import the sequelize instance from the configuration
 
-//const { Sequelize } = require('sequelize');
-//const db = require('../config/db'); // Import your MySQL connection
-//const sequelize = new Sequelize(db);
-
-// Define the Chambre model
-
-module.exports = (sequelize, DataTypes) => {
-
-const room = sequelize.define('room', {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  nom: {
-    type: DataTypes.STRING,
-    allowNull: false
-  }
+// Define the Room model
+const Room = sequelize.define('room', {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    nom: {
+        type: DataTypes.STRING,
+        allowNull: false
+    }
 }, {
-  timestamps: false // Disable createdAt and updatedAt fields
+    timestamps: false // Disable createdAt and updatedAt fields
 });
-return room}
 
-//module.exports = Chambre;
+// Sync the model with the database
+sequelize.sync({ force: false })
+    .then(() => {
+        console.log('Room model synchronized with database.');
+    })
+    .catch(error => {
+        console.error('Error synchronizing Room model:', error);
+    });
+
+module.exports = Room;

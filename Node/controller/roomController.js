@@ -1,6 +1,5 @@
-// roomController.js
 
-const { room } = require('../model'); // Import the Chambre model
+const room  = require('../model/room'); // Import the Room model
 
 // Get all rooms
 exports.getAllRooms = async (req, res) => {
