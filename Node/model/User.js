@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const {  DataTypes } = require('sequelize');
 const sequelize = require('../config/db'); // Import the sequelize instance from the configuration
 
 // Define the User model
@@ -30,3 +30,4 @@ sequelize.sync({ force: false })
     module.exports = {
         user: User
     };
+    module.exports = User; // Export the User model directly

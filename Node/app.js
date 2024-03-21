@@ -15,6 +15,10 @@ app.use('/user', userrouter);
 app.use('/room', roomRouter);
 app.use('/task', taskRouter);
 
+app.get("/", (req, res) => {
+  res.send("Test route is working");
+});
+
 
 
 app.use(bodyParser.json());

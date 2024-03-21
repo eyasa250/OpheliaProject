@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const {  DataTypes } = require('sequelize');
 const sequelize = require('../config/db'); // Import the sequelize instance from the configuration
 
 // Define the Task model
@@ -12,19 +12,8 @@ const Task = sequelize.define('Task', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    description: {
-        type: DataTypes.TEXT,
-        allowNull: true
-    },
-    dueDate: {
-        type: DataTypes.DATE,
-        allowNull: true
-    },
-    completed: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: false
-    }
+    
+   
 });
 
 // Sync the model with the database

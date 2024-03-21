@@ -4,7 +4,9 @@ const { Sequelize } = require('sequelize');
 const sequelize = new Sequelize('ophelia0', 'root', '', {
   host: 'localhost',
   dialect: 'mysql' ,
-  freezeTableName: false// This should be a string
+  freezeTableName: false,// This should be a string
+  logging: false// Log warnings and errors only
+
 });
 
 // Test the database connection

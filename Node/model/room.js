@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const {  DataTypes } = require('sequelize');
 const sequelize = require('../config/db'); // Import the sequelize instance from the configuration
 
 // Define the Room model

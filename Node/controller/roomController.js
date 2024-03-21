@@ -1,30 +1,25 @@
-
-const room  = require('../model/room'); // Import the Room model
+const Room = require('../model/room'); // Import the Room model
 
 // Get all rooms
 exports.getAllRooms = async (req, res) => {
-
   try {
-    //res.send('This is the rooms route');
-
-    const rooms = await room.findAll();
+    const rooms = await Room.findAll();
     res.json(rooms);
   } catch (error) {
     console.error(error);
-    res.send('there is an error');
+    res.status(500).json({ message: "Server Error" });
   }
-
 };
 
 // Get a single room by ID
 exports.getRoomById = async (req, res) => {
   const { id } = req.params;
   try {
-    const room = await room.findByPk(id);
-    if (!room) {
+    const foundRoom = await Room.findByPk(id);
+    if (!foundRoom) {
       return res.status(404).json({ message: "Room not found" });
     }
-    res.json(room);
+    res.json(foundRoom);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
@@ -35,7 +30,7 @@ exports.getRoomById = async (req, res) => {
 exports.createRoom = async (req, res) => {
   const { nom } = req.body;
   try {
-    const newRoom = await room.create({ nom });
+    const newRoom = await Room.create({ nom });
     res.status(201).json(newRoom);
   } catch (error) {
     console.error(error);
@@ -48,13 +43,13 @@ exports.updateRoom = async (req, res) => {
   const { id } = req.params;
   const { nom } = req.body;
   try {
-    const room = await room.findByPk(id);
-    if (!room) {
+    const foundRoom = await Room.findByPk(id);
+    if (!foundRoom) {
       return res.status(404).json({ message: "Room not found" });
     }
-    room.nom = nom;
-    await room.save();
-    res.json(room);
+    foundRoom.nom = nom;
+    await foundRoom.save();
+    res.json(foundRoom);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
@@ -65,11 +60,11 @@ exports.updateRoom = async (req, res) => {
 exports.deleteRoom = async (req, res) => {
   const { id } = req.params;
   try {
-    const room = await room.findByPk(id);
-    if (!room) {
+    const foundRoom = await Room.findByPk(id);
+    if (!foundRoom) {
       return res.status(404).json({ message: "Room not found" });
     }
-    await room.destroy();
+    await foundRoom.destroy();
     res.status(204).end();
   } catch (error) {
     console.error(error);
