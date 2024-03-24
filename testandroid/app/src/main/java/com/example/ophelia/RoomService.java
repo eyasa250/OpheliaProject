@@ -8,8 +8,8 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface RoomService {
-    @POST("/addroom")
-    Call<Room> addRoom(@Body Room room);
-    @GET("/")
+    @POST("room/addroom")
+    Call<Room> addRoom(@Body Room roomData);
+    @GET("/room")
     Call<List<Room>> getRooms();
 }
