@@ -12,7 +12,11 @@ const Task = sequelize.define('Task', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    
+    points: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0 // You can set a default value for points
+    }
    
 });
 
