@@ -1,12 +1,15 @@
 const { Sequelize } = require('sequelize');
 
 // Initialize Sequelize with your MySQL database credentials
-const sequelize = new Sequelize('ophelia0', 'root', '', {
-  host: 'localhost',
-  dialect: 'mysql' ,
-  freezeTableName: false,// This should be a string
-  logging: false// Log warnings and errors only
-
+const sequelize = new Sequelize('mysql://root:@localhost:3306/ophelia0', {
+  dialect: 'mysql',
+  define: {
+    freezeTableName: false
+  },
+  logging: false, // Log warnings and errors only
+  // dialectOptions: {
+  //   createDatabaseIfNotExist: true // This option will create the database if it doesn't exist
+  // }
 });
 
 // Test the database connection

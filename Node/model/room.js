@@ -1,8 +1,9 @@
-const {  DataTypes } = require('sequelize');
-const sequelize = require('../config/db'); // Import the sequelize instance from the configuration
+const { DataTypes } = require('sequelize');
+const sequelize = require('../config/db');
+const RoomTask = require('../model/RoomTask');
 
-// Define the Room model
-const Room = sequelize.define('room', {
+
+const Room = sequelize.define('Room', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -12,9 +13,10 @@ const Room = sequelize.define('room', {
         type: DataTypes.STRING,
         allowNull: false
     }
-}, {
-    timestamps: false // Disable createdAt and updatedAt fields
 });
+
+
+
 
 // Sync the model with the database
 sequelize.sync({ force: false })
