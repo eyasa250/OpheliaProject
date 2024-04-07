@@ -15,7 +15,7 @@ exports.getAllRooms = async (req, res) => {
 exports.getRoomById = async (req, res) => {
   const { id } = req.params;
   try {
-    const foundRoom = await Room.findByPk(id);
+    const foundRoom = await Room.findById(id);
     if (!foundRoom) {
       return res.status(404).json({ message: "Room not found" });
     }

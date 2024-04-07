@@ -1,27 +1,19 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/db');
-const RoomTask = require('../model/RoomTask');
+const mongoose = require('mongoose');
 
-
-const Task = sequelize.define('Task', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    title: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    description: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    points: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    }
+const taskSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    enum: ['Clean the kitchen', 'Vacuum the living room', 'Water the plants'], // Predefined list of task names
+  },
+  room: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Room',
+    required: true
+  }, 
+  // Add any other fields you need for a task
 });
+
+const Task = mongoose.model('Task', taskSchema);
 
 module.exports = Task;

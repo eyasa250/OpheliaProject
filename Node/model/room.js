@@ -1,30 +1,11 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/db');
-const RoomTask = require('../model/RoomTask');
+const mongoose = require('mongoose');
+const TASK_NAMES = require('../config/tasks'); // Adjust path as necessary
 
-
-const Room = sequelize.define('Room', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    nom: {
-        type: DataTypes.STRING,
-        allowNull: false
-    }
+const roomSchema = new mongoose.Schema({
+  nom: { type: String, required: true },
+ tasks: [{ type: String, enum: TASK_NAMES }] // Ensure only tasks from the predefined list can be added
 });
 
-
-
-
-// Sync the model with the database
-sequelize.sync({ force: false })
-    .then(() => {
-        console.log('Room model synchronized with database.');
-    })
-    .catch(error => {
-        console.error('Error synchronizing Room model:', error);
-    });
+const Room = mongoose.model('Room', roomSchema);
 
 module.exports = Room;

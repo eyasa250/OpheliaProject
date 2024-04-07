@@ -1,31 +1,11 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/db'); 
+const mongoose = require('mongoose');
 
-const User = sequelize.define('User', {
-    username: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
-    },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
-    },
-    password: {
-        type: DataTypes.STRING,
-        allowNull: false
-    }
-}, {
-    timestamps: false // Exclude timestamps (createdAt, updatedAt) during synchronization
+const userSchema = new mongoose.Schema({
+  username: { type: String, required: true, unique: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true }
 });
 
-sequelize.sync({ force: false })
-    .then(() => {
-        console.log('User model synchronized with database.');
-    })
-    .catch(error => {
-        console.error('Error synchronizing User model:', error);
-    });
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;
