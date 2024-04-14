@@ -1,11 +1,12 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/db'); 
+const {  DataTypes } = require('sequelize');
+const sequelize = require('../config/db'); // Import the sequelize instance from the configuration
 
+// Define the User model
 const User = sequelize.define('User', {
+    // Define your user schema here
     username: {
         type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
+        allowNull: false
     },
     email: {
         type: DataTypes.STRING,
@@ -16,10 +17,9 @@ const User = sequelize.define('User', {
         type: DataTypes.STRING,
         allowNull: false
     }
-}, {
-    timestamps: false // Exclude timestamps (createdAt, updatedAt) during synchronization
 });
 
+// Sync the model with the database
 sequelize.sync({ force: false })
     .then(() => {
         console.log('User model synchronized with database.');
@@ -27,5 +27,7 @@ sequelize.sync({ force: false })
     .catch(error => {
         console.error('Error synchronizing User model:', error);
     });
-
-module.exports = User;
+    module.exports = {
+        user: User
+    };
+    module.exports = User; // Export the User model directly
