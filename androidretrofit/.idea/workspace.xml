@@ -41,7 +41,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="361a390e-5196-489a-917e-a0f85eb39288" name="Changes" comment="" />
+    <list default="true" id="361a390e-5196-489a-917e-a0f85eb39288" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Node/controller/roomController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Node/controller/roomController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -127,7 +130,7 @@
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
     "last_directory_selection": "C:/Users/PC/Desktop/ophelia/android/app/src/main/java",
-    "last_opened_file_path": "D:/PC/Desktop/GLSI/returnto0"
+    "last_opened_file_path": "C:/Users/PC/Desktop/ophelia/androidretrofit"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -208,9 +211,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
-      <method v="2">
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
+      <method v="2" />
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

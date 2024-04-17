@@ -3,7 +3,7 @@ const Room = require('../model/room'); // Import the Room model
 // Get all rooms
 exports.getAllRooms = async (req, res) => {
   try {
-    const rooms = await Room.findAll();
+    const rooms = await Room.find();
     res.json(rooms);
   } catch (error) {
     console.error(error);
