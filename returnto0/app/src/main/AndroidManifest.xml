@@ -23,15 +23,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".task.addtask"
-            android:exported="false" />
+
         <activity
             android:name=".CreateRoomActivity"
             android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+
+
     </application>
 
 </manifest>
