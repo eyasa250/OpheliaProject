@@ -8,6 +8,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -100,9 +102,13 @@ public class TodoListFragment extends Fragment {
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d("TodoListFragment", "Card clicked: " + room.getName()); // Add this log
+                    Log.d("TodoListFragment", "Card clicked: " + room.getName());
 
-                    //  openAddTaskFragment(room);
+                    // Navigate to addtaskFragment
+                    NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
+                    navController.navigate(R.id.navigation_addtask);
+
+                    // Pass data to addtaskFragment
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("ROOM_OBJECT", room);
                     getParentFragmentManager().setFragmentResult("roomobject",bundle);
@@ -111,8 +117,7 @@ public class TodoListFragment extends Fragment {
 
             // Set the text of TextView
             textView.setText(room.getName());
-        }
-    }
+        }    }
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
