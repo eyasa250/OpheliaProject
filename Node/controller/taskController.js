@@ -32,7 +32,7 @@ exports.createTask = async (req, res) => {
 // Get all tasks
 exports.getAllTasks = async (req, res) => {
     try {
-        const tasks = await Task.findAll();
+        const tasks = await Task.find();
         res.json({ tasks });
     } catch (error) {
         console.error("Error fetching tasks:", error);
